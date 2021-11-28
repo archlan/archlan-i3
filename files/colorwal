@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Script used to changes global colorscheme based on wallpaper colors
+# @Lanhild (lanhild@protonmail.com)
+
+# Rofi theme directory
+TDIR="$HOME/.config/i3/rofi/glassy"
+
+# Wallpapers path
+WDIR="$HOME/Pictures/Wallpapers"
+
+# Launch Rofi
+MENU="$(rofi -no-config -no-lazy-grab -sep "|" -dmenu -i -p '' \
+-theme $TDIR/config.rasi \
+<<< "♥ cat|♥ dog|♥ koi")"
+            case "$MENU" in
+				*cat) wal -i "$WDIR"/cat.png ;;
+				*dog) wal -i "$WDIR"/dog.png ;;
+				*koi) wal -i "$WDIR"/koi.png
+            esac
