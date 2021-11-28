@@ -1,6 +1,7 @@
-# ArchLan Linux i3wm skeleton
+# ArchLan Linux i3 skel
+
 <p align="center">
-<a href="https://archlan.github.io"><img src="https://raw.githubusercontent.com/archlan/assets/main/img/logo/logo.svg" height="128" width="128" alt="ArchLan"></a>
+<a href="https://archlan.github.io"><img src="https://raw.githubusercontent.com/archlan/assets/main/img/logo/128x128_logo.svg" height="128" width="128" alt="ArchLan"></a>
 </p>
 
 
@@ -12,7 +13,7 @@
 </p>
 
 <p align="center">
-<a href="https://www.archlinux.org">Arch-based</a> based distribution. Designed for fun and minimalism.
+<a href="https://www.archlinux.org">Arch</a> based distribution. Designed for fun and minimalism.
 </p>
 
 ## Standalone setup for this configuration
