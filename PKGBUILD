@@ -8,7 +8,7 @@ url="https://github.com/archlan/archlan-i3"
 arch=('any')
 license=('GPL3')
 makedepends=('git')
-depends=('archlan-skel' 'i3-gaps' 'hsetroot')
+depends=('archlan-skeleton' 'i3-gaps' 'hsetroot')
 conflicts=()
 provides=("${pkgname}")
 options=(!strip !emptydirs)
@@ -24,14 +24,14 @@ package() {
 
 	# Copy i3wm config files
 	cp -r ${srcdir}/alacritty 		"$_config"
-	cp -r ${srcdir}/bin 			"$_config"
+	cp -r ${srcdir}/dunst 			"$_config"
 	cp -r ${srcdir}/polybar 		"$_config"
+	cp -r ${srcdir}/ranger 			"$_config"
 	cp -r ${srcdir}/rofi 			"$_config"
-	cp -r ${srcdir}/wallpapers 		"$_config"
 
-	chmod +x "$_config"/bin/*
-	chmod +x "$_config"/rofi/bin/*
+	chmod +x "$_config"/colorwal
 
+	install -Dm 644 colorwal		"$_config"/colorwal
 	install -Dm 644 config   		"$_config"/config
 	install -Dm 644 picom.conf   	"$_config"/picom.conf
 }
