@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    alacritty.yml                                      :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: Lanhild <archlan@protonmail.com>           +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/01/22 15:10:42 by Lanhild           #+#    #+#              #
+#    Updated: 2022/01/22 15:11:10 by Lanhild          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 # alacritty configuration made by @Lanhild (lanhild@protonmail.com)
 # This configuration file is also used by ArchLan Linux @archlan
 background_opacity: 0.85
@@ -17,7 +29,7 @@ font:
   normal:
     #change the font family if the text looks weird on Alacritty or install the Nerd Fonts
     family: Victor Mono SemiBold
-    style: Italic
+    style: 
   size: 10
   offset:
     x: 0

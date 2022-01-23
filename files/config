@@ -1,5 +1,18 @@
-# i3wm configuration made by @Lanhild (lanhild@protonmail.com)
-# This configuration file is also used by ArchLan Linux @archlan
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    config                                             :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: Lanhild <archlan@protonmail.com>           +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/01/22 15:02:58 by Lanhild           #+#    #+#              #
+#    Updated: 2022/01/23 12:19:13 by Lanhild          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# i3wm configuration made by @Lanhild <archlan@protonmail.com>
+# This config is also used by ArchLan Linux @archlan
+
 #######################
 # Basic i3wm parameters
 #######################
@@ -7,8 +20,8 @@
 set $kyoto Mod4
 
 # Set preferred terminal emulator
-#set $term kitty
 set $term alacritty --config-file $HOME/.config/i3/alacritty/alacritty.yml
+#set $term kitty --config $HOME/.config/i3/kitty/kitty.conf
 
 # Set floating modifier
 floating_modifier Mod1
@@ -22,61 +35,62 @@ gaps bottom 5
 
 # Window rules
 for_window [class=".*"] border pixel 5
-font pango:Victor Mono 10
+font pango:Noto Sans Regular 10
 
 ########################
-# Autostart applications
+# Autostart Applications
 ########################
+# Start polybar
+exec --no-startup-id $HOME/.config/i3/polybar/launch.sh
+
 # Start bluetooth applet
 exec --no-startup-id blueman-applet &
 
-# Start polybar status bar
-exec_always --no-startup-id $HOME/.config/i3/polybar/colorblocks/launch.sh &
-
-# Enable display compositing
-exec --no-startup-id picom --config $HOME/.config/i3/picom.conf &
-
-# Starts notifications daemon
+# Start notifications daemon
 exec --no-startup-id dunst -config $HOME/.config/i3/dunst/dunstrc &
 
-# Apply the saved screen layout and restore wallpaper
-exec --no-startup-id wal -R &
+# Restore the wallpaper
+exec --no-startup-id wal -i $HOME/.config/i3/wallpapers/default.jpg
+
+# Start compositor
+exec --no-startup-id picom --config $HOME/.config/i3/picom.conf
 
 #############
 # Keybindings
 #############
-# Lock the screen
-bindsym $kyoto+l exec dm-tool switch-to-greeter
+# Lock the screen - This is not a secure way to lock the screen, you better use something like i3lock
+bindsym $kyoto+l exec $HOME/.config/i3/scripts/lock
+#bindsym $kyoto+l exec i3lock
 
 # Adjust the volume
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 5%+ unmute 
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 5%- unmute
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume bluez_sink.E4_5E_1B_BF_6B_19.a2dp_sink +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume bluez_sink.E4_5E_1B_BF_6B_19.a2dp_sink -5%
 bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle
 
-# Take a screenshot
-bindsym Ctrl+Mod1+Tab exec --no-startup-id flameshot gui -p ~/Pictures/Screenshots/ && notify-send -u urgent -t 1800 "ピクチャー" "Screenshot saved"
+# Take a screenshot using flameshot
+bindsym Ctrl+Mod1+Tab exec --no-startup-id flameshot gui -p ~/Pictures/Screenshots/
 
 # Launch a terminal emulator
 bindsym $kyoto+Return exec $term &
 
 # Kill currently focused window
 bindsym $kyoto+w kill
-#bindsym Mod1+F4 kill
+
 
 ################
-# Rofi Shortcuts
+# Rofi shortcuts
 ################
 # Start rofi application launcher
-bindcode 133 --release exec rofi -show drun -theme $HOME/.config/i3/rofi/glassy/config.rasi
+bindcode 133 --release exec rofi -show drun -theme $HOME/.config/i3/rofi/config.rasi
 
 # Start rofi run launcher
-bindsym $kyoto+d exec rofi -show run -theme $HOME/.config/i3/rofi/glassy/config.rasi
+bindsym $kyoto+d exec rofi -show run -theme $HOME/.config/i3/rofi/config.rasi
 
-# Choose global theme
+# Choose global colorscheme - Script still being developed
 bindsym $kyoto+c exec $HOME/.config/i3/colorwal
 
 ##################
-# Windows keybinds
+# Windows Keybinds
 ##################
 # Focus keybinds
 bindsym $kyoto+Left focus left
@@ -103,11 +117,11 @@ bindsym $kyoto+space focus mode_toggle
 # Workspaces keybinds
 #####################
 # Set workspaces names
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
+set $ws1 "1:Ichi"
+set $ws2 "2:Ni"
+set $ws3 "3:San"
+set $ws4 "4:Shi"
+set $ws5 "5:Go"
 
 # Switch workspaces
 bindsym $kyoto+1 workspace number $ws1
