@@ -10,7 +10,7 @@ export SUDO_ASKPASS="$HOME/.config/i3/polybar/scripts/askpass"
 case "$chosen" in
 	$poweroff) poweroff || sudo -A poweroff ;;
 	$restart) reboot || sudo -A reboot ;;
-	$lock) sh $HOME/.local/bin/lock ;;
-	$logout) bspc quit ;;
+	$lock) sh $HOME/.config/i3/scripts/lock ;;
+	$logout) kill -9 -1 ;;
 	*) exit 1 ;;
 esac

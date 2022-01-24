@@ -6,7 +6,7 @@
 #    By: Lanhild <archlan@protonmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/22 15:02:58 by Lanhild           #+#    #+#              #
-#    Updated: 2022/01/23 12:19:13 by Lanhild          ###   ########.fr        #
+#    Updated: 2022/01/24 16:21:05 by Lanhild          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,24 +58,31 @@ exec --no-startup-id picom --config $HOME/.config/i3/picom.conf
 #############
 # Keybindings
 #############
-# Lock the screen - This is not a secure way to lock the screen, you better use something like i3lock
+# Lock the screen
 bindsym $kyoto+l exec $HOME/.config/i3/scripts/lock
-#bindsym $kyoto+l exec i3lock
+# This is not a secure way to lock the screen, you better use something like i3lock
+#bindsym $kyoto+l exec dm-tool switch-to-greeter
 
-# Adjust the volume
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume bluez_sink.E4_5E_1B_BF_6B_19.a2dp_sink +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume bluez_sink.E4_5E_1B_BF_6B_19.a2dp_sink -5%
-bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle
+# Adjust the volume and change brightness
+bindsym XF86AudioRaiseVolume exec $HOME/.config/i3/scripts/changevolume up
+bindsym XF86AudioLowerVolume exec $HOME/.config/i3/scripts/changevolume down
+bindsym XF86AudioMute exec $HOME/.config/i3/scripts/changevolume mute
+
+bindsym XF86MonBrightnessUp exec xbacklight +5
+bindsym XF86MonBrightnessDown exec xbacklight -5
 
 # Take a screenshot using flameshot
-bindsym Ctrl+Mod1+Tab exec --no-startup-id flameshot gui -p ~/Pictures/Screenshots/
+bindsym Ctrl+Mod1+Tab exec $HOME/.config/i3/scripts/screenshot
 
+### Launch applications
 # Launch a terminal emulator
 bindsym $kyoto+Return exec $term &
 
+# Start firefox
+bindsym $kyoto+Mod1+w firefox &> /dev/null
+
 # Kill currently focused window
 bindsym $kyoto+w kill
-
 
 ################
 # Rofi shortcuts
@@ -86,8 +93,14 @@ bindcode 133 --release exec rofi -show drun -theme $HOME/.config/i3/rofi/config.
 # Start rofi run launcher
 bindsym $kyoto+d exec rofi -show run -theme $HOME/.config/i3/rofi/config.rasi
 
-# Choose global colorscheme - Script still being developed
-bindsym $kyoto+c exec $HOME/.config/i3/colorwal
+# Rofi powermenu
+bindsym $kyoto+x exec $HOME/.config/i3/scripts/powermenu
+
+# Rofi wifi menu
+bindsym $kyoto+n exec $HOME/.config/i3/scripts/wifimenu
+
+# Rofi bluetooth menu
+bindsym $kyoto+b exec $HOME/.config/i3/scripts/rofi-bluetooth
 
 ##################
 # Windows Keybinds
