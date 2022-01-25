@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+## Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
+
+DIR="$HOME/.config/i3"
+SRC="$HOME/.config/i3/scripts/theme-switch"
+rofi_command="rofi -theme $SRC/themes.rasi"
+
+# Themes
+theme_1=" Luna"
+
+# Variable passed to rofi
+options="$theme_1"
+
+chosen="$(echo -e "$options" | $rofi_command -p "Available themes : (1)" -dmenu -selected-row 0)"
+case $chosen in
+    $theme_1)
+        bash ${SRC}/set-theme  'aenami_06.jpg' 'Flat-Remix-GTK-Violet-Dark' 'Fluent-purple-dark' 'Layan Cursors'
+        ;;
+esac

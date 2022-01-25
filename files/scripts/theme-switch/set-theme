@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    rofi-wal                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: Lanhild <archlan@protonmail.com>           +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/01/25 13:04:34 by Lanhild           #+#    #+#              #
+#    Updated: 2022/01/25 13:04:35 by Lanhild          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# This script is invoked when the user has chosen the theme name. It passes the
+# arguments here as ${1}, ${2}, ${3} and ${4} and then applies the changes, to 
+# in the end restart the window manager to remove visual artifacts.
+
+CFG="$HOME/.config"
+XRES="$HOME/.Xresources.d"
+
+## Set Style
+set_style () {
+	# apply wallpaper with pywal
+	wal -i /usr/share/backgrounds/archlan/${1}
+	
+	# set gtk theme, icons and cursor
+	if [[ `pidof xsettingsd` ]]; then
+		sed -i -e "s|Net/ThemeName .*|Net/ThemeName \"$2\"|g" ${HOME}/.xsettingsd
+		sed -i -e "s|Net/IconThemeName .*|Net/IconThemeName \"$3\"|g" ${HOME}/.xsettingsd
+		sed -i -e "s|Gtk/CursorThemeName .*|Gtk/CursorThemeName \"$4\"|g" ${HOME}/.xsettingsd
+	else
+		sed -i -e "s/gtk-theme-name=.*/gtk-theme-name=\"$2\"/g" ${HOME}/.gtkrc-2.0
+		sed -i -e "s/gtk-icon-theme-name=.*/gtk-icon-theme-name=\"$3\"/g" ${HOME}/.gtkrc-2.0
+		sed -i -e "s/gtk-cursor-theme-name=.*/gtk-cursor-theme-name=\"$4\"/g" ${HOME}/.gtkrc-2.0
+		
+		sed -i -e "s/gtk-theme-name=.*/gtk-theme-name=$2/g" ${CFG}/gtk-3.0/settings.ini
+		sed -i -e "s/gtk-icon-theme-name=.*/gtk-icon-theme-name=$3/g" ${CFG}/gtk-3.0/settings.ini
+		sed -i -e "s/gtk-cursor-theme-name=.*/gtk-cursor-theme-name=$4/g" ${CFG}/gtk-3.0/settings.ini
+	fi
+
+	# Change the polybar theme 
+	if [[ `pidof polybar` ]]; then
+		sed -i -e 's\exec_always --no-startup-id $HOME/.config/i3/polybar/launch.sh\exec_always --no-startup-id $HOME/.config/i3/polybar/${5}/launch.sh\g' ${CFG}/i3/config
+	fi
+	
+	# reload config
+	i3 restart
+}
+
+set_style "${1}" "${2}" "${3}" "${4}"
