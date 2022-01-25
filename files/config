@@ -102,6 +102,9 @@ bindsym $kyoto+n exec $HOME/.config/i3/scripts/wifimenu
 # Rofi bluetooth menu
 bindsym $kyoto+b exec $HOME/.config/i3/scripts/rofi-bluetooth
 
+# Change global theme
+bindsym $kyoto+v exec $HOME/.config/i3/scripts/theme-switch/themes
+
 ##################
 # Windows Keybinds
 ##################

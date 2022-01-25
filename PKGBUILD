@@ -6,7 +6,7 @@
 #    By: Lanhild <archlan@protonmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/23 12:22:12 by Lanhild           #+#    #+#              #
-#    Updated: 2022/01/25 17:04:24 by Lanhild          ###   ########.fr        #
+#    Updated: 2022/01/25 17:08:15 by Lanhild          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 
 pkgname=archlan-i3
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="i3wm Configurations for ArchLan"
 url="https://github.com/archlan/archlan-i3"
 arch=('any')
@@ -45,7 +45,6 @@ package() {
 
 	chmod -R 755 "$_config"/scripts
 
-	install -Dm 644 colorwal		"$_config"/colorwal
 	install -Dm 644 config   		"$_config"/config
 	install -Dm 644 picom.conf   	"$_config"/picom.conf
 }
