@@ -6,7 +6,7 @@
 #    By: Lanhild <archlan@protonmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/23 12:22:12 by Lanhild           #+#    #+#              #
-#    Updated: 2022/02/04 23:27:05 by Lanhild          ###   ########.fr        #
+#    Updated: 2022/02/05 11:31:02 by Lanhild          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 
 pkgname=archlan-i3
 pkgver=1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="i3wm Configurations for ArchLan"
 url="https://github.com/archlan/archlan-i3"
 arch=('any')
