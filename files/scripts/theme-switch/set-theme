@@ -39,13 +39,8 @@ set_style () {
 		sed -i -e "s/gtk-cursor-theme-name=.*/gtk-cursor-theme-name=$4/g" ${CFG}/gtk-3.0/settings.ini
 	fi
 
-	# Change the polybar theme 
-	if [[ `pidof polybar` ]]; then
-		sed -i -e 's\exec_always --no-startup-id $HOME/.config/i3/polybar/launch.sh\exec_always --no-startup-id $HOME/.config/i3/polybar/${5}/launch.sh\g' ${CFG}/i3/config
-	fi
-	
-	# reload config
-	i3 restart
+	# Change polybar theme
+	${CFG}/i3/polybar/$5/launch.sh
 }
 
-set_style "${1}" "${2}" "${3}" "${4}"
+set_style "${1}" "${2}" "${3}" "${4}" "${5}"

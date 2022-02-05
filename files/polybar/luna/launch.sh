@@ -1,6 +1,6 @@
 #!/usr/bin/sh
 
-dir="$HOME/.config/i3/polybar"
+dir="$HOME/.config/i3/polybar/luna"
 
 launch_bar() {
   pkill polybar
