@@ -18,11 +18,13 @@
 
 CFG="$HOME/.config"
 XRES="$HOME/.Xresources.d"
+DEFDIR="$CFG/i3/scripts/theme-switch/defaults"
+WALDIR="/usr/share/backgrounds/archlan"
 
 ## Set Style
 set_style () {
 	# apply wallpaper with pywal
-	wal -i /usr/share/backgrounds/archlan/${1}
+	wal -i $WALDIR/${1}
 	
 	# set gtk theme, icons and cursor
 	if [[ `pidof xsettingsd` ]]; then
@@ -41,6 +43,22 @@ set_style () {
 
 	# Change polybar theme
 	${CFG}/i3/polybar/$5/launch.sh
+
+	# Save current theme in config.yaml - Used to restore the theme at machine boot. (under development)
+	if [[ `pidof Xorg` ]]; then
+		printf "" > ${DEFDIR}/config.yaml
+		printf "theme-name: ${5}`\n`
+polybar-config: /home/USER/.config/i3/polybar/${5}/config.ini`\n`
+gtk-theme: ${2}`\n`
+icon-theme: ${3}`\n`
+cursor-theme: ${4}`\n`
+wallpaper-path: ${WALDIR}/${1}" > ${DEFDIR}/config.yaml
+	fi
+
+	# Send notification of what theme has been selected
+	if [[ `pidof Xorg` ]]; then
+		notify-send "${5} theme applied."
+	fi
 }
 
 set_style "${1}" "${2}" "${3}" "${4}" "${5}"

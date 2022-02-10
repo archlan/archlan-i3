@@ -9,9 +9,11 @@ rofi_command="rofi -theme $SRC/themes.rasi"
 # Themes
 theme_1=" Luna"
 theme_2=" Roundy"
+theme_3=" Flower"
+theme_4=" Cat"
 
 # Variable passed to rofi
-options="$theme_1\n$theme_2"
+options="$theme_1\n$theme_2\n$theme_3\n$theme_4"
 
 chosen="$(echo -e "$options" | $rofi_command -p "Available themes : (2)" -dmenu -selected-row 0)"
 case $chosen in
@@ -20,5 +22,11 @@ case $chosen in
         ;;
     $theme_2)
         bash ${SRC}/set-theme  'aenami_05.jpg' 'Cloudy-Solid-SoftBlue-Dark' 'Colloid-dark' 'Layan Cursors' 'roundy'
+        ;;
+    $theme_3)
+        bash ${SRC}/set-theme  'flower.png' 'Floral' 'oomox-Floral' 'ArcDusk Cursors' 'flower'
+        ;;
+    $theme_4)
+        bash ${SRC}/set-theme  'cat.png' 'Midnight-OrangeNight' 'Inverse-orange-dark' 'ArcDusk Cursors' 'cat'
         ;;
 esac

@@ -55,6 +55,8 @@ exec --no-startup-id wal -i $HOME/.config/i3/wallpapers/default.jpg
 # Start compositor
 exec --no-startup-id picom --config $HOME/.config/i3/picom.conf
 
+# Restore the screenlayout
+exec_always --no-startup-id $HOME/.screenlayout/layout.sh
 #############
 # Keybindings
 #############

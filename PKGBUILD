@@ -6,7 +6,7 @@
 #    By: Lanhild <archlan@protonmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/23 12:22:12 by Lanhild           #+#    #+#              #
-#    Updated: 2022/02/05 12:34:55 by Lanhild          ###   ########.fr        #
+#    Updated: 2022/02/10 17:12:04 by Lanhild          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 
 pkgname=archlan-i3
 pkgver=1.1
-pkgrel=5
+pkgrel=6
 pkgdesc="i3wm Configurations for ArchLan"
 url="https://github.com/archlan/archlan-i3"
 arch=('any')
@@ -36,12 +36,12 @@ package() {
 	mkdir -p "$_config"
 
 	# Copy i3wm config files
-	cp -r ${srcdir}/alacritty 		"$_config"
-	cp -r ${srcdir}/dunst 			"$_config"
-	cp -r ${srcdir}/polybar 		"$_config"
-	cp -r ${srcdir}/rofi 			"$_config"
-	cp -r ${srcdir}/scripts 		"$_config"
-	cp -r ${srcdir}/wallpapers 		"$_config"
+	cp -rf ${srcdir}/alacritty 		"$_config"
+	cp -rf ${srcdir}/dunst 			"$_config"
+	cp -rf ${srcdir}/polybar 		"$_config"
+	cp -rf ${srcdir}/rofi 			"$_config"
+	cp -rf ${srcdir}/scripts 		"$_config"
+	cp -rf ${srcdir}/wallpapers 	"$_config"
 
 	chmod -R 755 "$_config"/scripts
 
