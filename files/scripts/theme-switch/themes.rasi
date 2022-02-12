@@ -7,7 +7,7 @@ configuration {
 	click-to-exit: 					true;
 }
 
-@import "~/.cache/wal/colors-rofi-light"
+@import "~/.cache/wal/colors-rofi-dark"
 
 window {
     transparency:                   "real";

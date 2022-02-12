@@ -14,7 +14,7 @@
 
 pkgname=archlan-i3
 pkgver=1.1
-pkgrel=6
+pkgrel=7
 pkgdesc="i3wm Configurations for ArchLan"
 url="https://github.com/archlan/archlan-i3"
 arch=('any')

@@ -1,6 +1,6 @@
-theme-name: cat
-polybar-config: /home/USER/.config/i3/polybar/cat/config.ini
-gtk-theme: Midnight-OrangeNight
-icon-theme: Inverse-orange-dark
+theme-name: color
+polybar-config: /home/USER/.config/i3/polybar/color/config.ini
+gtk-theme: Otis
+icon-theme: Fluent-purple-dark
 cursor-theme: ArcDusk Cursors
-wallpaper-path: /usr/share/backgrounds/archlan/cat.png
+wallpaper-path: /usr/share/backgrounds/archlan/color.png

@@ -11,22 +11,26 @@ theme_1=" Luna"
 theme_2=" Roundy"
 theme_3=" Flower"
 theme_4=" Cat"
+theme_5=" Color"
 
 # Variable passed to rofi
-options="$theme_1\n$theme_2\n$theme_3\n$theme_4"
+options="$theme_1\n$theme_2\n$theme_3\n$theme_4\n$theme_5"
 
-chosen="$(echo -e "$options" | $rofi_command -p "Available themes : (2)" -dmenu -selected-row 0)"
+chosen="$(echo -e "$options" | $rofi_command -p "Available themes : (5)" -dmenu -selected-row 0)"
 case $chosen in
     $theme_1)
         bash ${SRC}/set-theme  'aenami_06.jpg' 'Flat-Remix-GTK-Violet-Dark' 'Fluent-purple-dark' 'Layan Cursors' 'luna'
         ;;
     $theme_2)
-        bash ${SRC}/set-theme  'aenami_05.jpg' 'Cloudy-Solid-SoftBlue-Dark' 'Colloid-dark' 'Layan Cursors' 'roundy'
+        bash ${SRC}/set-theme  'aenami_05.jpg' 'Cloudy-Solid-SoftBlue-Dark' 'Colloid-dark' 'Material' 'roundy'
         ;;
     $theme_3)
         bash ${SRC}/set-theme  'flower.png' 'Floral' 'oomox-Floral' 'ArcDusk Cursors' 'flower'
         ;;
     $theme_4)
         bash ${SRC}/set-theme  'cat.png' 'Midnight-OrangeNight' 'Inverse-orange-dark' 'ArcDusk Cursors' 'cat'
+        ;;
+    $theme_5)
+        bash ${SRC}/set-theme  'color.png' 'Otis' 'Fluent-purple-dark' 'ArcDusk Cursors' 'color'
         ;;
 esac
